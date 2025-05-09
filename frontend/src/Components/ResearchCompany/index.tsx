@@ -9,7 +9,7 @@ const ResearchCompany = () => {
     if (company == "") return;
     setLoading(true);
     try {
-      const response = await fetch("http://127.0.0.1:8000/research", {
+      const response = await fetch("http://127.0.0.1:8000/api/v1/research", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ company }),
