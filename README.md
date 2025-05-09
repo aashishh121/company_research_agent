@@ -13,6 +13,10 @@ Clone this repository and navigate to the project directory:
 Run below command in terminal
 ```
 pip install .
+
+To run the FastAPI app, you need an ASGI server like `uvicorn`, `hypercorn`, or `daphne`.
+For example, using `uvicorn`:
+pip install uvicorn
 python -m uvicorn main:app
 ```
 The application will be available at http://127.0.0.1:8000.
@@ -30,7 +34,7 @@ The application will be available at http://localhost:3000.
 # Tech Stack
   Backend
   ```
-  Python (FastAPI / Flask / Django supported)
+  Python (FastAPI)
   LangGraph
   Tavily API
   OpenAI API or similar LLM
