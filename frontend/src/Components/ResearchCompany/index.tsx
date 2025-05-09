@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { CompanyData } from "../../interface/common";
 
 const ResearchCompany = () => {
-  const [company, setCompany] = useState("");
-  const [data, setData] = useState<null | any>(null);
-  const [loading, setLoading] = useState(false);
+  const [company, setCompany] = useState<string>("");
+  const [data, setData] = useState<null | CompanyData>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const researchCompany = async () => {
     if (company == "") return;
@@ -14,9 +15,9 @@ const ResearchCompany = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ company }),
       });
-      const result = await response.json();
-      console.log(result, "result");
-      if (result.info) {
+
+      if (response.ok) {
+        const result = await response.json();
         setData(result);
       }
     } catch (error) {
