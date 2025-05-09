@@ -1,6 +1,6 @@
 import logging
 from fastapi import APIRouter, HTTPException
-from src.agent import graph
+from src.agent.graph import graph
 from src.agent.state import InputState
 from src.model.user_request import UserRequest
 
