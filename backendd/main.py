@@ -1,23 +1,32 @@
 from fastapi import FastAPI, Request, HTTPException
 from pydantic import BaseModel
-from agent.graph import graph
-from agent.state import OverallState, InputState, OutputState
-from agent.configuration import Configuration
+from src.agent.graph import graph
+from src.agent.state import OverallState, InputState, OutputState
+from src.agent.configuration import Configuration
 import logging
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], 
+    allow_credentials=True,
+    allow_methods=["*"], 
+    allow_headers=["*"],  
+)
 
 class UserRequest(BaseModel):
     company: str
 
-@app.post("/company-research")
+@app.post("/research")
 async def run_agent(request: UserRequest):
     try:
         input_state = InputState(
             company=request.company
         )
 
-        result = await graph.invoke(input_state)
+        result = await graph.ainvoke(input_state)
         return result
 
     except ValueError as ve:
