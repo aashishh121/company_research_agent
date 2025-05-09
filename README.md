@@ -15,7 +15,8 @@ Run below command in terminal
 pip install .
 
 To run the FastAPI app, you need an ASGI server like `uvicorn`, `hypercorn`, or `daphne`.
-For example, using `uvicorn`:
+For example, using `uvicorn` run below command:
+
 pip install uvicorn
 python -m uvicorn main:app
 ```
